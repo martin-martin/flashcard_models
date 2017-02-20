@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>word_1_study</title>
+  <style type="text/css">
+    .flashcard {
+      max-width: 400px;
+      margin: auto;
+    }
+    /* select all direct children of the specified type
+    to give them a unified spacing and centering */
+    .flashcard > div,
+    .flashcard > p {
+      margin: 50px 0 50px 0; /* top right bottom left */
+      text-align: center;
+    }
+    .img-carousel,
+    .action-bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .word {
+      font-size: 1.5em;
+    }
+    .audio-pronunciation {
+      text-decoration: none;
+    }
+    .audio-icon {
+      width: 15px;
+      height: 15px;
+    }
+    /* the 'hint:' buttons should be unobstrusive */
+    .btn-translation,
+    .btn-song-translation {
+      background: none;
+      font-size: 1em;
+      font: inherit;
+      border: none;
+      margin: none;
+      /* gray, yo! */
+      color: lightgray;
+    }
+    .word-translation,
+    .song-translation {
+      /* when studying the flashcard, the translation fields should be hidden
+      and only come up when the user clicks 'hint:' */
+      color: lightgray;
+      /*visibility: hidden;*/
+    }
+    .song-line,
+    .song-translation {
+      font-style: italic;
+    }
+    .user-notes {
+      width: 100%;
+    }
+    /* when adding words to the flashcard deck, this should be a carousel,
+    on the actual flashcard it would display only the image the user picked. */
+    .focus-image {
+      width: 200px;
+      /*height: 200px;*/
+    }
+    /* nav arrows only when picking the image, not on the final flashcard */
+    .img-nav {
+      width: 24px;
+      height: 24px;
+      align-self: center;
+    }
+    /* move the hint: field closer to the cloze-deletion sentence,
+    in order to take focus off the translation. */
+    .translation,
+    .song-translation {
+      margin: 0 0 0 0 !important;
+    }
+    .cloze,
+    .song-line {
+      margin: 50px 0 5px 0 !important;
+    }
+    .word-translation {
+      /* should be adaptable to the size of the current word */
+      width: 25px;
+    }
+    .input-song-translation {
+      /* should be adaptable to the size of the current word */
+      width: 230px;
+    }
+    textarea {
+      margin: 50px 0 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="flashcard">
+    <!-- when adding words to the flashcard deck, this should be a carousel,
+    on the actual flashcard it would display only the image the user picked. -->
+    <!-- <div class="img-carousel"> -->
+    <!-- the IMAGE should be optional for this card type -->
+      <!-- <img class="img-nav" src="Chevron_left.svg"> -->
+      <div class="img-container">
+        <img class="focus-image" src="http://3.bp.blogspot.com/-dwhTwnymC50/U4i-9XZSl9I/AAAAAAAAAHI/nkWK0l4bBtM/s1600/decir_espanol.jpg">
+      </div>
+      <!-- <img class="img-nav" src="Chevron_right.svg"> -->
+    <!-- </div> -->
+    <p class="cloze">
+      Tú me ______ que no es cierto que te mueres por mí
+    </p>
+    <div class="translation">
+    <!-- the flashcard only shows both the 'hint:' and the translated word when adding a new card
+    when studying the flashcard, only the 'hint' button gets displayed - best would be directly
+    underneath the clozed-out word ('_____') - and upon clicking 'hint:', the translated word
+    gets displayed instead of 'hint:' -->
+      <button class="btn-translation">hint:</button>
+      <!-- this is an input field because the translations are often bad and the user should
+      be able to edit it, if they think that it's not a good translation
+      (QUESTION): how are they gonna know it's not a good translation? -->
+      <!-- <input class="word-translation" placeholder="say"> -->
+    </div>
+    <p class="definition">
+      <!-- a short definition in the target language (get it from http://www.wordreference.com/) -->
+      expresar con palabras
+    </p>
+    <hr>
+    <div class="word">
+      <a class="audio-pronunciation" href="">dices <img class="audio-icon" src="audio.png"></a>
+    </div>
+    <p class="song-line">
+      Tú me dices que no es cierto que te mueres por mí
+    </p>
+    <div class="song-translation">
+    <!-- same here as for the single-word translation -->
+      <button class="btn-song-translation">hint:</button>
+      <!-- <input class="input-song-translation" placeholder="You tell me it's not true that you die for me"> -->
+    </div>
+    <!-- if the user wants to add additional information to better remember he/she can do so here -->
+    <textarea class="user-notes" rows="3" placeholder="Optional: Enter notes"></textarea>
+    <div class="action-bar">
+      <button>Again</button>
+      <button>Hard</button>
+      <button>Good</button>
+      <button>Easy</button>
+    </div>
+  </div>
+</body>
+</html>

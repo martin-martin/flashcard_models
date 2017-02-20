@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>recognition-model</title>
+  <style type="text/css">
+    .flashcard {
+      max-width: 400px;
+      margin: auto;
+    }
+    /* selects all direct children of the specified type
+    to give them a unified spacing and centering */
+    .flashcard > div,
+    .flashcard > p {
+      margin: 50px 0 50px 0; /* top right bottom left */
+      text-align: center;
+    }
+    .img-carousel,
+    .action-bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .word {
+      font-size: 1.5em;
+    }
+    .audio-pronunciation {
+      text-decoration: none;
+    }
+    .icon {
+      width: 15px;
+      height: 15px;
+    }
+    .translation,
+    .song-translation {
+      display: flex;
+      justify-content: space-around;
+    }
+    .btn-translation,
+    .btn-song-translation {
+      background: none;
+      font-size: 1em;
+      font: inherit;
+      border: none;
+      margin: none;
+      /* gray, yo! */
+      color: lightgray;
+    }
+    .word-translation,
+    .song-translation {
+      /*visibility: hidden;*/
+      color: lightgray;
+    }
+    .song-line,
+    .song-translation {
+      font-style: italic;
+    }
+    .user-notes {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="flashcard">
+    <div class="img-carousel">
+      <img class="img-nav" src="Chevron_left.svg">
+      <div class="img-container"></div>
+      <img class="img-nav" src="Chevron_right.svg">
+    </div>
+    <div class="word">
+      <a class="audio-pronunciation" href="">original word <img class="icon" src="audio.png"></a>
+    </div>
+    <div class="translation">
+      <button class="btn-translation">hint:</button>
+      <p class="word-translation">translated word</p>
+    </div>
+    <hr>
+    <p class="definition">
+      easy definition
+    </p>
+    <p class="song-line">
+      la la la la song line.
+    </p>
+    <div class="song-translation">
+      <button class="btn-song-translation">hint:</button>
+      <p class="song-translation">translated song line.</p>
+    </div>
+    <textarea class="user-notes" rows="3" placeholder="Optional: Enter notes"></textarea>
+    <div class="action-bar">
+      <button>Cancel</button>
+      <button>Add</button>
+    </div>
+  </div>
+</body>
+</html>
