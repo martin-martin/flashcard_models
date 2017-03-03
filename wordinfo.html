@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    .word-info {
+      max-width: 400px;
+      margin: auto;
+      border: 1px solid black;
+      text-align: center;
+    }
+    /* the add to deck btn, big, obvious, and clickabl ;) */
+    /* for non-addable words this should be replaced by a simple msg */
+    .hero-btn {
+      width: 100%;
+      height: 80px;
+      background-color: #AEEA00;
+      font-size: 1.3em;
+      color: white;
+      box-shadow: 2px 2px 3px #888888;
+    }
+    .orig-word {
+      font-size: 2em;
+      font-style: bold;
+    }
+    /* eventually less important info is displayed smaller, and gray */
+    .pos,
+    .formality {
+      font-size: 0.8em;
+      color: lightgray;
+      font-style: italic;
+    }
+    .main-def-info {
+      display: flex;
+      justify-content: space-around;
+    }
+    .translation {
+      color: lightgray;
+    }
+    .example-sentence {
+      font-style: italic;
+    }
+    /* adding background color for better visibility */
+    .uneven {
+      background-color: #f1f1f1;
+      padding-bottom: 6px;
+    }
+    .uneven .formality, /* only if both classes apply */
+    .uneven .translation {
+      color: gray; /* in order to make the gray parts still visible */
+    }
+    /* part that allows toggling the extra info */
+    /* eventually the arrow should turn when clicked, but I'm cold and need a break. */
+    .control-icon {
+      width: 20px;
+    }
+    input {
+      display: none;
+      visibility: hidden;
+    }
+    #expand {
+      height: 0px;
+      overflow: hidden;
+      transition: height 0.5s;
+    }
+    #toggle:checked ~ #expand {
+      height: 100%;
+    }
+    .complex-def {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    /* styling the conjugation table */
+    .conjugation-table {
+      width: 100%;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+    }
+    table.conjugation-table tr:nth-child(even) {
+        background-color: #fff;
+    }
+    table.conjugation-table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+/*    table.conjugation-table th {
+        color: white;
+        background-color: black;
+    }*/
+    td {
+        text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="word-info">
+    <button class="hero-btn">Add Flashcard to your Deck</button>
+    <div class="main">
+      <p class="orig-word">hablo</p>
+      <p class="pos">1st persona singular (yo) presente indicativo</p>
+      <p class="base-word">hablar</p>
+      <!-- this is a definition box that has a unique consecutive ID -->
+      <div class="simple-definitions">
+        <div id="def-1" class="definition-box uneven" onclick="selectDef()">
+          <input type="radio" id="def-1-btn" name="simple-def">
+          <div class="main-def-info">
+            <p class="simple-def">
+              <span class="definition">conversar</span>
+              <span class="formality">(formal)</span> <!-- not sure where this info is located? -->
+            </p>
+            <p class="translation">talk</p>
+          </div>
+          <p class="example-sentence">Los niños estuvieron hablando toda la tarde.</p>
+        </div>
+        <div id="def-2" class="definition-box even" onclick="selectDef()">
+          <input type="radio" id="def-2-btn" name="simple-def">
+          <div class="main-def-info">
+            <p class="simple-def">
+              <span class="definition">dar un discurso</span>
+              <span class="formality">(formal)</span> <!-- not sure where this info is located? -->
+            </p>
+            <p class="translation">speak</p>
+          </div>
+          <p class="example-sentence">El Presidente hablará hoy en la televisión.</p>
+        </div>
+        <div id="def-3" class="definition-box uneven" onclick="selectDef()">
+          <input type="radio" id="def-3-btn" name="simple-def">
+          <div class="main-def-info">
+            <p class="simple-def">
+              <span class="definition">saber idiomas</span>
+              <span class="formality">(formal)</span> <!-- not sure where this info is located? -->
+            </p>
+            <p class="translation">speak</p>
+          </div>
+          <p class="example-sentence">En Suecia se habla sueco e inglés.</p>
+        </div>
+      </div>
+    </div>
+    <!-- this is the little arrow that makes the lower section (id="exapnd") expand -->
+    <input id="toggle" type="checkbox" checked>
+    <label for="toggle">
+      <img class="control-icon" src="img/keyboard_arrow_down_grey_192x192.png">
+    </label>
+    <!-- starts the section containing the extra definitions -->
+    <div id="expand" class="extra">
+      <p class="complex-def">
+        more elaborate definition that explains all the elaborate things about this word and all its simple bits of simple definitions, talks about the POS and what it means exactly, and gently segues into a collateral mention of a grammar concept by e.g. introducing a:
+      </p>
+      <!-- this can easily become very complex, if you really want to include everything.
+      like, wordreference has tons of info and I think it'd be too much. I would try to keep it simple.
+      we could add a link to wordreference if people want more, what do you think?
+      like so: http://www.wordreference.com/conj/EsVerbs.aspx?v=hablar -->
+      <table class="conjugation-table">
+        <tr>
+          <th>person</th>
+          <th>conjugation</th>
+        </tr>
+        <tr>
+          <td>yo</td>
+          <td>hablo</td>
+        </tr>
+        <tr>
+          <td>tú</td>
+          <td>hablas</td>
+        </tr>
+        <tr>
+          <td>él, ella, Ud</td>
+          <td>habla</td>
+        </tr>
+        <tr>
+          <td>nosotros</td>
+          <td>hablamos</td>
+        </tr>
+        <tr>
+          <td>vosotros</td>
+          <td>habláis</td>
+        </tr>
+        <tr>
+          <td>ellos, ellas, Uds.</td>
+          <td>hablan</td>
+        </tr>
+        <tr>
+          <td>vos</td>
+          <td>hablás</td>
+        </tr>
+      </table>
+      <a class="more-link" href="http://www.wordreference.com/conj/EsVerbs.aspx?v=hablar">Even more info!</a>
+    </div>
+  </div>
+  <script type="text/javascript">
+    // you can probably write this real fast with jQuery, so I leave it for now
+    // it's just about adding the 'checked' attribute to the corresponding simple-def div.
+    // 'checked = true' then it's selected
+  </script>
+</body>
+</html>
